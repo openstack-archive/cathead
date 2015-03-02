@@ -1,0 +1,6 @@
+hacking
+freezegun
+python-subunit>=0.0.18
+testrepository>=0.0.18
+testtools>=0.9.34
+mock>=1.0
