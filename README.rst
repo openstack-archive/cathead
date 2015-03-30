@@ -67,26 +67,26 @@ Running
    The *actions* section contains actions to perform on different events. So
    far the possible events are
 
-    - Successful refresh of a certificate
-    - Failure to refresh a certificate
+   - Successful refresh of a certificate
+   - Failure to refresh a certificate
 
-    Actions can either by system calls or python calls.
+   Actions can either by system calls or python calls.
 
-    name
-      Name of the action, used to associate with a certificate event callback.
+   name
+     Name of the action, used to associate with a certificate event callback.
 
-    type
+   type
       The type of action, either ``'system'`` for a system call (e.g. ``reboot``)
       or ``'python'`` which allows executing a python callable.
 
-    module
+   module
       Use this when using type of ``python`` to select which module the
       callable is in.
 
-    command
+   command
       Specify the command or callable to be run.
 
-    args
+   args
       Specify the arguments to the command or callable. This should be a list.
 
 4. Run cathead with your requirements file. ::
@@ -102,11 +102,11 @@ with. This can be done using ::
 Known Issues
 """""""""""
 
-Ctrl-C doens't work
+Ctrl-C doesn't work
 
-    Currently you cannot interrupt the cathead process due to APScheduler not
-    supporting this. When you run ``cathead config.py`` in the terminal you have to
-    termiate the process with ``Ctrl-z`` and ``kill %1`` (or whatever job it was).
+  Currently you cannot interrupt the cathead process due running the process
+  from the APScheduler thread. When you run ``cathead config.py`` in the
+  terminal you have to terminate the process with ``Ctrl-z`` and ``kill %1``.
 
 Naming
 """"""
