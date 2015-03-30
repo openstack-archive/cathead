@@ -65,7 +65,7 @@ Running
    construction. e.g. ``SelfSignDriver(**drivers['selfsign'])``
 
    The *actions* section contains actions to perform on different events. So
-   far the possible events are:
+   far the possible events are
 
     - Successful refresh of a certificate
     - Failure to refresh a certificate
@@ -98,6 +98,15 @@ For the self signing driver you will need to generate a key to sign the certs
 with. This can be done using ::
 
     openssl genrsa 2048 > ca.key
+
+Known Issues
+"""""""""""
+
+Ctrl-C doens't work
+
+    Currently you cannot interrupt the cathead process due to APScheduler not
+    supporting this. When you run ``cathead config.py`` in the terminal you have to
+    termiate the process with ``Ctrl-z`` and ``kill %1`` (or whatever job it was).
 
 Naming
 """"""

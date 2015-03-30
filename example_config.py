@@ -19,7 +19,7 @@ CONF = {
         {
             'name': 'selfsign',
             'driver': 'cathead.drivers.selfsign.SelfSignDriver',
-            'ca_key': 'ca.p.key',
+            'ca_key_file': 'ca.p.key',
         },
         {
             'name': 'eca',

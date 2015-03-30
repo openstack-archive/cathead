@@ -50,7 +50,10 @@ class Scheduler(object):
             self._scheduler.add_job(watcher.check_and_update, 'interval',
                                     seconds=new_interval, id=key_path)
             if callback:
-                callback()
+                try:
+                    callback()
+                except Exception as e:
+                    LOG.exception(e)
         return success_callback
 
     def _create_failure_callback(self, key_path):
