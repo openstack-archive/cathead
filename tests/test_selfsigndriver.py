@@ -1,6 +1,6 @@
 import re
-import unittest
 import tempfile
+import unittest
 
 from cathead.drivers import selfsign
 from cathead import x509

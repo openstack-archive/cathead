@@ -113,12 +113,14 @@ class Cathead(object):
     def wait(self):
         self._scheduler.wait()
 
+
 def main():
     if len(sys.argv) == 2:
         # sys.path.append(os.path.abspath(sys.argv[1]))
         # conf_module = importlib.import_module(sys.argv[1].split(".py")[0])
         # conf = __import__(sys.argv[1].split(".py")[0])
-        (file, path, desc) = imp.find_module(sys.argv[1].split(".py")[0], ["."])
+        py_file = sys.argv[1].split(".py")[0]
+        (file, path, desc) = imp.find_module(py_file, ["."])
         conf_module = imp.load_module('', file, path, desc)
         Cathead(conf_module.CONF).start()
     else:
