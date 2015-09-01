@@ -21,6 +21,7 @@ Running
 2. Install requirements and cathead into a virtual env. ::
 
    virtualenv .venv
+   source .venv/bin/activate
    pip install -r requirements.txt
    pip install .
 
