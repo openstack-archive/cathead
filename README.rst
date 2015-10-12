@@ -114,5 +114,5 @@ Naming
 
 The name comes from the `anchor support
 <https://en.wikipedia.org/wiki/Cathead>`_ as this project can be used in
-conjunction with `Anchor <https://github.com/stackforge/anchor/>`_ an an
+conjunction with `Anchor <https://github.com/openstack/anchor/>`_ an an
 ephemeral PKI service.
