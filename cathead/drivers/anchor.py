@@ -23,30 +23,33 @@ from cathead import x509
 LOG = logging.getLogger(__name__)
 
 
-class EcaDriver(cadriver.CaDriver):
+class AnchorDriver(cadriver.CaDriver):
 
     def __init__(self, host, port,
-                 user, secret, scheme='http'):
+                 user, secret, root='default', scheme='http'):
         self.host = host
         self.port = port
         self.user = user
         self.secret = secret
         self.scheme = scheme
+        self.root = root
 
     def sign(self, csr):
-        url = "{scheme}://{host}:{port}/sign".format(**self.__dict__)
+        urlscheme = "{scheme}://{host}:{port}/v1/sign/{root}"
+        url = urlscheme.format(**self.__dict__)
         LOG.info("Sending CSR to %s" % url)
         params = {"user": self.user,
                   "secret": self.secret,
                   "encoding": "pem",
-                  "csr": csr}
+                  "csr": csr,
+                  "root": self.root}
         r = requests.post(url, data=params)
         cert = r.text
-        LOG.debug("Received from ECA server:\n%s" % cert)
+        LOG.debug("Received from Anchor server:\n%s" % cert)
         if self._is_valid_cert(cert):
             return cert
         else:
-            LOG.info("Received invalid certificate from ECA")
+            LOG.info("Received invalid certificate from Anchor")
 
     def _is_valid_cert(self, cert):
         try:
