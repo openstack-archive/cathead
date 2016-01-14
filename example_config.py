@@ -12,6 +12,9 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+# The anchor driver is setup to use the default configuration
+# of anchor when running in a container
+
 CONF = {
     'failure_refresh_timeout': 10,
     'drivers': [
@@ -21,20 +24,21 @@ CONF = {
             'ca_key_file': 'ca.p.key',
         },
         {
-            'name': 'eca',
-            'driver': 'cathead.drivers.eca.EcaDriver',
-            'host': '127.0.0.1',
-            'port': 5000,
+            'name': 'anchor',
+            'driver': 'cathead.drivers.anchor.AnchorDriver',
+            'host': '192.168.99.100',
+            'port': 5016,
             'user': 'woot',
             'secret': 'woot',
+            'root': 'default'
         }
     ],
     'certs': [
         {
-            'driver': 'eca',
-            'key': 'ca.p.key',
-            'cert': 'newcrt.crt',
-            'refresh_window': None,
+            'driver': 'anchor',
+            'key': 'tmp/anchor-test.example.com.key',
+            'cert': 'tmp/anchor-test.example.com.crt',
+            'refresh_window': 1,
             'common_name': '127.0.0.1',
             'on_refresh_success': 'hello_system',
         }
